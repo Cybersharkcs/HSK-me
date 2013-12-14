@@ -4,10 +4,12 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import javax.swing.event.EventListenerList;
+import javax.xml.bind.JAXB;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 
 /**
  * 
@@ -17,20 +19,22 @@ import javax.swing.event.EventListenerList;
  * @author Maxime
  *
  */
+@XmlType(name="Dictionnaire", propOrder={"listCaractere"})
+@XmlRootElement(name="dictionnaire")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Dictionnaire {
-	
-	private List<Caractere> vocab;
+	@XmlElement(name="caractere")
+	private List<Caractere> listCaractere;
 	
 	public Dictionnaire(){
-		this.vocab = new ArrayList<Caractere>();
 	}
 	
-	public List<Caractere> getListVocab(){
-		return this.vocab;
-	}
-	
+        public Dictionnaire unmarshallDictionnaire(){
+            return JAXB.unmarshal(new File("dictionnaire.xml"), Dictionnaire.class);
+        }
+        
 	public void loadVocab(File file) throws IOException{
-		String line = " " ;
+                String line = " " ;
 		String[] bf = new String[3] ;
 		FileReader fr = new FileReader(file) ;
 		BufferedReader bfr = new BufferedReader (fr) ;
@@ -38,20 +42,20 @@ public class Dictionnaire {
 			//System.out.println("DEBUG loadVocab String line: " + line) ;
 			bf = line.split(",") ;
 			//System.out.println("DEBUG loadVocab String[] bf 0 : " + bf[0] + " 1 : " + bf[1] + " 2 : " + bf[2]) ;
-			this.vocab.add(new Caractere(bf[0],bf[1],bf[2]));
+			this.getListCaractere().add(new Caractere(bf[0],bf[1],bf[2]));
 		}
 		bfr.close();
-                Collections.shuffle(vocab);
+                Collections.shuffle(getListCaractere());
 		//Collections.sort(vocab); //vocab sorted by pinyin
 		System.out.println("DEBUG : Dico hsk2 cree, nombre entrees : " + this.getVocabSize()) ;
 	}
 	
 	public void searchVocab(String pinyin){
-		Arrays.binarySearch(vocab.toArray(), pinyin);
+		Arrays.binarySearch(getListCaractere().toArray(), pinyin);
 	}
 
 	public void afficheVocab(){
-		Iterator<Caractere> it = vocab.iterator();
+		Iterator<Caractere> it = getListCaractere().iterator();
 		while(it.hasNext()){
 			Caractere obj = it.next();
 			System.out.println(obj.getPinyin());
@@ -59,23 +63,33 @@ public class Dictionnaire {
 	}
 	
 	public int getVocabSize(){
-		return vocab.size() ;
+		return getListCaractere().size() ;
 	}
 	
 	public Caractere getVocabAlea(){
-		int i = (int) ( Math.random() * vocab.size() ) ;
-		return vocab.get(i) ;
+		int i = (int) ( Math.random() * getListCaractere().size() ) ;
+		return getListCaractere().get(i) ;
 	}
 
 	public Caractere getVocab (int i){
-		return vocab.get(i) ;
+		return getListCaractere().get(i) ;
 	}
         
-        public List<Caractere> getVocab (){
-		return vocab ;
+	public void clearListCaractere(){
+		getListCaractere().clear() ;
 	}
-	
-	public void clearVocab(){
-		vocab.clear() ;
-	}
+
+        /**
+         * @return the dictionnaire
+         */
+        public List<Caractere> getListCaractere() {
+            return listCaractere;
+        }
+
+        /**
+         * @param dictionnaire the dictionnaire to set
+         */
+        public void setListCaractere(List<Caractere> dictionnaire) {
+            this.listCaractere = dictionnaire;
+        }
 }

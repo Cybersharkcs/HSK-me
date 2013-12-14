@@ -22,6 +22,7 @@ public class Questionnaire implements Runnable{
 	private boolean state ; //questionnaire en cours ou pas
 	private int nbquest;
         private int count;
+        
 	public Questionnaire(){
 		this.serie = new ArrayList<Question>() ;
 		listeners = new EventListenerList();
@@ -33,34 +34,34 @@ public class Questionnaire implements Runnable{
 
 	}
 	
-	public void setQuestion(int nb, Dictionnaire dico, String from, String to){
-		List<Question> serieold = this.serie;
-		int ancienb = this.nbquest;
-		this.nbquest = nb;
-		this.state = true ;
-                String question="",solution="";
-		for (int i =0 ; i<nb ; i++){
-                        if(from.equals("caractere")) {
-                            question=dico.getVocab(i).getCaractere();
-                            if(to.equals("pinyin")) solution=dico.getVocab(i).getPinyin();
-                            else if(to.equals("francais")) solution=dico.getVocab(i).getTraduction();
-                        } else if(from.equals("pinyin")) {
-                            question=dico.getVocab(i).getPinyin();
-                            if(to.equals("caractere")) solution=dico.getVocab(i).getCaractere();
-                            else if(to.equals("francais")) solution=dico.getVocab(i).getTraduction();
-                        } else if(from.equals("francais")) {
-                            question=dico.getVocab(i).getTraduction();
-                            if(to.equals("caractere")) solution=dico.getVocab(i).getCaractere();
-                            else if(to.equals("pinyin")) solution=dico.getVocab(i).getPinyin();
-                        }
-			this.serie.add(new Question(question, solution));
-		}
-		QuestionEvent q = new QuestionEvent(serieold,this.serie);
-		System.out.println("DEBUG : Questionnaire rempli, nombre questions : " + this.serie.size()) ;
-		
-		fireListQuestionChange(q);
-		fireNbQuestionChange(ancienb, this.nbquest);
-	}
+//	public void setQuestion(int nb, Dictionnaire dico, String from, String to){
+//		List<Question> serieold = this.serie;
+//		int ancienb = this.nbquest;
+//		this.nbquest = nb;
+//		this.state = true ;
+//                String question="",solution="";
+//		for (int i =0 ; i<nb ; i++){
+//                        if(from.equals("caractere")) {
+//                            question=dico.getVocab(i).getCaractere();
+//                            if(to.equals("pinyin")) solution=dico.getVocab(i).getPinyin();
+//                            else if(to.equals("francais")) solution=dico.getVocab(i).getTraduction();
+//                        } else if(from.equals("pinyin")) {
+//                            question=dico.getVocab(i).getPinyin();
+//                            if(to.equals("caractere")) solution=dico.getVocab(i).getCaractere();
+//                            else if(to.equals("francais")) solution=dico.getVocab(i).getTraduction();
+//                        } else if(from.equals("francais")) {
+//                            question=dico.getVocab(i).getTraduction();
+//                            if(to.equals("caractere")) solution=dico.getVocab(i).getCaractere();
+//                            else if(to.equals("pinyin")) solution=dico.getVocab(i).getPinyin();
+//                        }
+//			this.serie.add(new Question(question, solution));
+//		}
+//		QuestionEvent q = new QuestionEvent(serieold,this.serie);
+//		System.out.println("DEBUG : Questionnaire rempli, nombre questions : " + this.serie.size()) ;
+//		
+//		fireListQuestionChange(q);
+//		fireNbQuestionChange(ancienb, this.nbquest);
+//	}
         
         public QuestionListener[] getQuestionListeners() {
             return listeners.getListeners(QuestionListener.class);

@@ -1,4 +1,12 @@
 package com.hskme.model;
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlValue;
+
 /**
  * 
  */
@@ -7,18 +15,33 @@ package com.hskme.model;
  * @author Maxime
  *
  */
+@XmlType(name="Caractere", propOrder={"categorie","traduction", "pinyin", "sinogramme"})
+@XmlRootElement(name="caractere")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Caractere implements Comparable<Caractere>{
 
 	/**
 	 * 
 	 */
+        @XmlAttribute(required=true)
+        private String categorie;
+        @XmlAttribute(required=true)
 	private String traduction;
+        @XmlAttribute(required=true)
 	private String pinyin;
-	private String caractere;
+        @XmlValue
+	private String sinogramme;
 	
+
+        /**
+	 * No-args constructor for JAXB
+	 */
+        public Caractere() {
+        }
+        
 	public Caractere(String caractere, String pinyin, String traduction) {
 		// TODO Auto-generated constructor stub
-		this.caractere = caractere;
+		this.sinogramme = caractere;
 		this.pinyin = pinyin;
 		this.traduction = traduction;
 	}
@@ -51,24 +74,39 @@ public class Caractere implements Comparable<Caractere>{
 		this.pinyin = pinyin;
 	}
 
-	/**
-	 * @return the caractere
-	 */
-	public String getCaractere() {
-		return caractere;
-	}
-
-	/**
-	 * @param caractere the caractere to set
-	 */
-	public void setCaractere(String caractere) {
-		this.caractere = caractere;
-	}
 
 	@Override
 	public int compareTo(Caractere c) {
 		// TODO Auto-generated method stub
 		return pinyin.compareTo(c.pinyin);
 	}
+
+        /**
+         * @return the categorie
+         */
+        public String getCategorie() {
+            return categorie;
+        }
+
+        /**
+         * @param categorie the categorie to set
+         */
+        public void setCategorie(String categorie) {
+            this.categorie = categorie;
+        }
+
+        /**
+         * @return the sinogramme
+         */
+        public String getSinogramme() {
+            return sinogramme;
+        }
+
+        /**
+         * @param sinogramme the sinogramme to set
+         */
+        public void setSinogramme(String sinogramme) {
+            this.sinogramme = sinogramme;
+        }
 
 }
