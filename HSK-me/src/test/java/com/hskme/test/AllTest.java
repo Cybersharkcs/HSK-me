@@ -14,7 +14,7 @@ import org.junit.runners.Suite.SuiteClasses;
  */
 
 @RunWith(Suite.class)
-@SuiteClasses(value={QuestionnaireTest.class})
+@SuiteClasses(value={QuestionnaireTest.class,DictionnaireOXMTest.class})
 public class AllTest {
     
 }
