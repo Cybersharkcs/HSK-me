@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT dictionnaire (caractere)>
+<!ELEMENT caractere (sinogramme,pinyin,traduction)>
+    <!ATTLIST caractere categorie CDATA #REQUIRED>
+<!ELEMENT sinogramme (#PCDATA)>
+<!ELEMENT pinyin (#PCDATA)>
+<!ELEMENT traduction (#PCDATA)>
