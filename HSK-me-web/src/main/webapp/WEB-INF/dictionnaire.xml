@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dictionnaire SYSTEM "./dictionnaire.dtd">
+<!--<dictionnaire xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:noNamespaceSchemaLocation="dictionnaire.xsd" categorie="HSK2">-->
+<dictionnaire categorie="HSK2">
+    <caractere>
+        <sinogramme></sinogramme>
+        <pinyin></pinyin>
+        <traduction></traduction>
+    </caractere>
+</dictionnaire>
