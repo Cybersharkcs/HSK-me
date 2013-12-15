@@ -5,12 +5,11 @@
 package com.hskme.service;
 
 import com.hskme.model.Utilisateur;
-import java.sql.SQLException;
 
 /**
  *
  * @author root
  */
-public interface UtilisateurDaoJdbcService {
-    public Utilisateur selectInfosUtilisateur() throws SQLException;
+public interface UtilisateurDaoHibernateService {
+    public Utilisateur selectUtilisateur(String name) ;
 }

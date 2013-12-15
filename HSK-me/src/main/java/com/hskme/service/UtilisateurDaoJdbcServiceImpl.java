@@ -21,7 +21,7 @@ public class UtilisateurDaoJdbcServiceImpl implements UtilisateurDaoJdbcService{
     }
     
     @Override
-    public Utilisateur recupererInfosUtilisateur() throws SQLException {
+    public Utilisateur selectInfosUtilisateur() throws SQLException {
         return dao.recupererInfosUtilisateur();
     }
     

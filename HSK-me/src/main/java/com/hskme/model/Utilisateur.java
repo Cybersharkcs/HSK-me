@@ -4,13 +4,29 @@
  */
 package com.hskme.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  *
  * @author root
  */
+@Entity
+@Table(name="utilisateur")
 public class Utilisateur {
+    @Id
     private String email;
     private String password;
+
+    public Utilisateur() {
+    }
+
+    public Utilisateur(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
 
     /**
      * @return the email

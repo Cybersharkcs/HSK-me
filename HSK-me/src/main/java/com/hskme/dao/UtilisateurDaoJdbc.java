@@ -15,7 +15,7 @@ import java.util.logging.Logger;
  *
  * @author root
  */
-public class UtilisateurDaoJdbc extends Connector {
+public class UtilisateurDaoJdbc extends AbstractDao {
     
     private Statement statement;
     private ResultSet resultSet;
@@ -28,7 +28,7 @@ public class UtilisateurDaoJdbc extends Connector {
         }
     }
     
-    public Utilisateur recupererInfosUtilisateur() throws SQLException{
+    public Utilisateur recupererInfosUtilisateur() throws SQLException {
         Utilisateur utilisateur = null;
         statement = connection.createStatement();
         resultSet = statement.executeQuery("select email,password from utilisateur");
