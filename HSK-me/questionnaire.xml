@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<questionnaire>
+    <entree>
+        <question answered="true" solution="solution" >question ?</question>
+        <reponse valid="true|false">rep1</reponse>
+        <reponse valid="true|false">rep2</reponse>
+        <reponse valid="true|false">rep3</reponse>
+        <reponse valid="true|false">rep4</reponse>
+        <reponse valid="true|false">rep5</reponse>
+    </entree>
+</questionnaire>
