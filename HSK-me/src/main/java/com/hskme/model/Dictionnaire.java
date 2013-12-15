@@ -12,10 +12,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 /**
- * 
- */
-
-/**
  * @author Maxime
  *
  */
@@ -29,10 +25,17 @@ public class Dictionnaire {
 	public Dictionnaire(){
 	}
 	
-        public Dictionnaire unmarshallDictionnaire(){
+        public static Dictionnaire unmarshallDictionnaire(){
             return JAXB.unmarshal(new File("dictionnaire.xml"), Dictionnaire.class);
         }
         
+        public void marshallDictionnaire(File file){
+            JAXB.marshal(this, file);
+        }
+        
+        /**
+	 * Deprecated
+	 */
 	public void loadVocab(File file) throws IOException{
                 String line = " " ;
 		String[] bf = new String[3] ;

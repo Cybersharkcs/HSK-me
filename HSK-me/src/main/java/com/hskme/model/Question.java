@@ -1,35 +1,34 @@
 package com.hskme.model;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlValue;
+
 /**
  * @author Maxime
  *	
  */
+@XmlType(name="Question", propOrder={"answered","solution","question"})
+@XmlRootElement(name="entree")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Question {
-	
-	private String question;
-	private String reponse ;
+	@XmlAttribute(required=true)
+        private boolean answered ;
+        @XmlAttribute(required=true)
 	private String solution ;
-	
-        private boolean valid ;
-	private boolean answered ;
+        @XmlValue
+        private String question;
+        
+        public Question(){
+            
+        }
         
 	public Question(String question, String solution){
 		this.question = question;
                 this.solution = solution;
-	}
-
-	/**
-	 * @return the valid
-	 */
-	public boolean isValid() {
-		return valid;
-	}
-
-	/**
-	 * @param valid the valid to set
-	 */
-	public void setValid(boolean valid) {
-		this.valid = valid;
 	}
 
 	public void setQuestion(String question) {
@@ -41,14 +40,6 @@ public class Question {
 	 */
 	public String getQuestion() {
 		return question;
-	}
-        
-	public String getReponse() {
-		return reponse;
-	}
-
-	public void setReponse(String reponse) {
-		this.reponse = reponse;
 	}
 
 	public String getSolution() {

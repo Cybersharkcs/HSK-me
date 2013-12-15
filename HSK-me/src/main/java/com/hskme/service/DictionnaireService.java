@@ -5,13 +5,17 @@
 package com.hskme.service;
 
 import com.hskme.model.Dictionnaire;
+import java.io.File;
 
 /**
  *
  * @author root
  */
-public class DictionnaireService {
-    public Dictionnaire instanciateDictionnaire(){
-        return new Dictionnaire().unmarshallDictionnaire();
-    }
+public interface DictionnaireService {
+    /**
+     *
+     * @return
+     */
+    public void marshallDictionnaire(Dictionnaire dictionnaire, File file);
+    public Dictionnaire unmarshallDictionnaire();
 }

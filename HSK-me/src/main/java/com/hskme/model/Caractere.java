@@ -40,7 +40,6 @@ public class Caractere implements Comparable<Caractere>{
         }
         
 	public Caractere(String caractere, String pinyin, String traduction) {
-		// TODO Auto-generated constructor stub
 		this.sinogramme = caractere;
 		this.pinyin = pinyin;
 		this.traduction = traduction;

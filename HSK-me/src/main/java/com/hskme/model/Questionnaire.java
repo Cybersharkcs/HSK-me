@@ -1,8 +1,14 @@
 package com.hskme.model;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.swing.event.EventListenerList;
+import javax.xml.bind.JAXB;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 
 /**
  * 
@@ -12,20 +18,22 @@ import javax.swing.event.EventListenerList;
  * @author Maxime
  *
  */
+@XmlType(name="Questionnaire", propOrder={"entree"})
+@XmlRootElement(name="questionnaire")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Questionnaire implements Runnable{
 
 	/**
 	 * @param args
 	 */
-	public List<Question> serie ;
+        @XmlElement(name="entree")
+        private List<Entree> entree;
+        
 	private final EventListenerList listeners ;
-	private boolean state ; //questionnaire en cours ou pas
-	private int nbquest;
-        private int count;
         
 	public Questionnaire(){
-		this.serie = new ArrayList<Question>() ;
 		listeners = new EventListenerList();
+                entree = new ArrayList<Entree>();
 	}
 	
 	@Override
@@ -34,8 +42,19 @@ public class Questionnaire implements Runnable{
 
 	}
 	
+        public static Questionnaire unmarshallQuestionnaire(){
+            return JAXB.unmarshal(new File("questionnaire.xml"), Questionnaire.class);
+        }
+        
+         /**
+	 * Sauvegarde un questionnaire
+	 */
+        public void marshallQuestionnaire(File file){
+            JAXB.marshal(this, file);
+        }
+        
 //	public void setQuestion(int nb, Dictionnaire dico, String from, String to){
-//		List<Question> serieold = this.serie;
+//		List<Entree> serieold = this.getEntree();
 //		int ancienb = this.nbquest;
 //		this.nbquest = nb;
 //		this.state = true ;
@@ -66,46 +85,46 @@ public class Questionnaire implements Runnable{
         public QuestionListener[] getQuestionListeners() {
             return listeners.getListeners(QuestionListener.class);
         }
-
-	public Question getQuestion(int i){
-			return serie.get(i);
-	}
-        
-        public List<Question> getSerie() {
-            return serie;
-        }
-	
-	public String getSolution(int i){
-		return serie.get(i).getSolution() ;
-	}
-
-	public void setSolution(int i, String solution){
-		serie.get(i).setSolution(solution) ;
-	}
-
-	public String getReponse(int i){
-		return serie.get(i).getReponse() ;
-	}
-
-	public void setReponse(int i, String reponse){
-		String reponseold = this.serie.get(i).getReponse();
-		//on verifie si la reponse est bonne ou pas
-		serie.get(i).setReponse(reponse) ;
-		if ( serie.get(i).getReponse().equals(serie.get(i).getSolution()) ){
-			serie.get(i).setValid(true) ;
-		} else serie.get(i).setValid(false);
-		
-		fireReponseQuestionChange(reponseold,serie.get(i).getReponse());
-	}
-	
-        public void addQuestionListener(QuestionListener listener) {
-            listeners.add(QuestionListener.class, listener);
-        }
-
-        public void removeQuestionListener(QuestionListener listener) {
-            listeners.remove(QuestionListener.class, listener);
-        }
-	
+//
+//	public Question getQuestion(int i){
+//			return serie.get(i);
+//	}
+//        
+//        public List<Question> getSerie() {
+//            return serie;
+//        }
+//	
+//	public String getSolution(int i){
+//		return serie.get(i).getSolution() ;
+//	}
+//
+//	public void setSolution(int i, String solution){
+//		serie.get(i).setSolution(solution) ;
+//	}
+//
+//	public String getReponse(int i){
+//		return serie.get(i).getReponse() ;
+//	}
+//
+//	public void setReponse(int i, String reponse){
+//		String reponseold = this.serie.get(i).getReponse();
+//		//on verifie si la reponse est bonne ou pas
+//		serie.get(i).setReponse(reponse) ;
+//		if ( serie.get(i).getReponse().equals(serie.get(i).getSolution()) ){
+//			serie.get(i).setValid(true) ;
+//		} else serie.get(i).setValid(false);
+//		
+//		fireReponseQuestionChange(reponseold,serie.get(i).getReponse());
+//	}
+//	
+//        public void addQuestionListener(QuestionListener listener) {
+//            listeners.add(QuestionListener.class, listener);
+//        }
+//
+//        public void removeQuestionListener(QuestionListener listener) {
+//            listeners.remove(QuestionListener.class, listener);
+//        }
+//	
 	private void fireReponseQuestionChange(String reponseold, String reponse) {
 		// TODO Auto-generated method stub
         for(QuestionListener listener : getQuestionListeners()) {
@@ -126,14 +145,58 @@ public class Questionnaire implements Runnable{
             listener.listQuestionChange(q);
         }
 	}
+//
+//	public void clearSerie(){
+//		serie.clear() ;
+//	}
+//
+//	public String askQuestion(int i){
+//		try {
+//			return serie.get(i).getQuestion();
+//		}catch (IndexOutOfBoundsException e) { return null ; }
+//	}	
 
-	public void clearSerie(){
-		serie.clear() ;
-	}
+    /**
+     * @return the entree
+     */
+    public List<Entree> getEntree() {
+        return entree;
+    }
 
-	public String askQuestion(int i){
-		try {
-			return serie.get(i).getQuestion();
-		}catch (IndexOutOfBoundsException e) { return null ; }
-	}	
+    /**
+     * @param entree the entree to set
+     */
+    public void setEntree(List<Entree> entree) {
+        this.entree = entree;
+    }
+    
+    public void initQuestionnaire(int nb, Dictionnaire dico, String from, String to){
+        for (int i =0 ; i<nb ; i++){
+                Entree nouvelleEntree = new Entree();
+                if(from.equals("caractere")) {
+                    nouvelleEntree.getQuestion().setQuestion(dico.getVocab(i).getSinogramme());
+                    if(to.equals("pinyin")) {
+                        nouvelleEntree.getQuestion().setSolution(dico.getVocab(i).getPinyin());
+                    } else if (to.equals("francais")) {
+                        nouvelleEntree.getQuestion().setSolution(dico.getVocab(i).getTraduction()); 
+                    }
+                } else if(from.equals("pinyin")) {
+                    nouvelleEntree.getQuestion().setQuestion(dico.getVocab(i).getPinyin());
+                    if(to.equals("caractere")) {
+                        nouvelleEntree.getQuestion().setSolution(dico.getVocab(i).getSinogramme());
+                    } else if(to.equals("francais")) {
+                        nouvelleEntree.getQuestion().setSolution(dico.getVocab(i).getTraduction()); 
+                    }
+                } else if(from.equals("francais")) {
+                    nouvelleEntree.getQuestion().setQuestion(dico.getVocab(i).getTraduction());
+                    if(to.equals("caractere")) {
+                        nouvelleEntree.getQuestion().setSolution(dico.getVocab(i).getSinogramme());
+                    } else if(to.equals("pinyin")) {
+                        nouvelleEntree.getQuestion().setSolution(dico.getVocab(i).getPinyin());
+                    }
+                }
+                this.entree.add(nouvelleEntree);
+        }
+    }
+    
 }
