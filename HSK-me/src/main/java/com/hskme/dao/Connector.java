@@ -20,7 +20,7 @@ public abstract class Connector {
     
     public void connectionJDBC() throws ClassNotFoundException, SQLException{
         Class.forName("com.mysql.jdbc.Driver");
-        connection = DriverManager.getConnection("jdbc:mysql://localhost/HSKme?user=root&password=ca83dxmy");
+        connection = DriverManager.getConnection("jdbc:mysql://localhost/HSKme?user=root&password=lamepassword");
         
     }
     
