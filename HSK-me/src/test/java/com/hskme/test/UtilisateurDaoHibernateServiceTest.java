@@ -25,7 +25,7 @@ public class UtilisateurDaoHibernateServiceTest {
         daoHibernateService = new UtilisateurDaoHibernateServiceImpl();
     }
 
-    @Test
+
     public void testSelectUtilisateur() throws Exception {
         Utilisateur utilisateur = daoHibernateService.selectUtilisateur("maxime");
         Assert.assertEquals("utilisateurs egaux", "maxime", utilisateur.getEmail());

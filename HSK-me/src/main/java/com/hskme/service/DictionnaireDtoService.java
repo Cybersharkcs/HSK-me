@@ -7,4 +7,5 @@ import com.hskme.dto.DictionnaireDto;
 public interface DictionnaireDtoService {
     public void marshallDictionnaire(File file);
     public DictionnaireDto unmarshallDictionnaire();
+    public void loadVocab(File file, String categorie);
 }

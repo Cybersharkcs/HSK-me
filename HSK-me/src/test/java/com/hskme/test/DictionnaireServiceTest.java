@@ -4,46 +4,44 @@
  */
 package com.hskme.test;
 
+import com.hskme.dto.DictionnaireDto;
 import com.hskme.model.Dictionnaire;
 import com.hskme.service.DictionnaireService;
 import com.hskme.service.DictionnaireServiceImpl;
+
 import java.io.File;
+
+import javax.annotation.Resource;
+
 import org.junit.Assert;
-import org.junit.BeforeClass;
 import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.stereotype.Component;
 /**
  *
  * @author root
  */
+@Component("dictionnaireServiceTest")
 public class DictionnaireServiceTest {
+    @Resource(name="dictionnaireServiceImpl")
+    private DictionnaireService dictionnaireService ;
+    private static ApplicationContext ctx;
     
-    private DictionnaireService dictionnaireService;
+	public DictionnaireServiceTest() {
+		ctx = new ClassPathXmlApplicationContext("spring-context-services.cfg.xml");
+    	dictionnaireService = (DictionnaireServiceImpl) ctx.getBean("dictionnaireServiceImpl");
+		
+	}
     
-    @BeforeClass
-    public static void setUpClass() {
-        
-    }
+
     
-    @Test
-    public void testUnmarshallingDictionnaire(){
-        dictionnaireService = new DictionnaireServiceImpl();
-        Dictionnaire dictionnaire = dictionnaireService.unmarshallDictionnaire();
-        Assert.assertNotNull("dictionnaire non null", dictionnaire);
-        Assert.assertNotNull("dictionnaire non vide", dictionnaire.getListCaractere());
-        System.out.println(dictionnaire.getListCaractere().size());
-        System.out.println(dictionnaire.getListCaractere().get(0).getSinogramme());
-        System.out.println(dictionnaire.getListCaractere().get(0).getCategorie());
-        System.out.println(dictionnaire.getListCaractere().get(0).getPinyin());
-        System.out.println(dictionnaire.getListCaractere().get(0).getTraduction());
-    }
-    
-    @Test
-    public void testMarshallingDictionnaire() {
-        File file = new File("test_dictionnaire.xml");
-        Dictionnaire dictionnaire = new Dictionnaire();
-        dictionnaireService = new DictionnaireServiceImpl();
-        dictionnaireService.marshallDictionnaire(dictionnaire, file);
-        Assert.assertNotNull("Le fichier a été crée", file.exists());
-    }
+    public DictionnaireService getDictionnaireService() {
+		return dictionnaireService;
+	}
+
+	public void setDictionnaireService(DictionnaireServiceImpl dictionnaireService) {
+		this.dictionnaireService = dictionnaireService;
+	}
     
 }

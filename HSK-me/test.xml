@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<dictionnaire>
+    <caractere>
+        <categorie>categorie</categorie>
+        <pinyin>pinyin</pinyin>
+        <sinogramme>sino</sinogramme>
+        <traductions>
+            <traduction>traduction1</traduction>
+            <traduction>traduction2</traduction>
+        </traductions>
+    </caractere>
+</dictionnaire>

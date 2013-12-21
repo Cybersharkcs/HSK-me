@@ -18,9 +18,6 @@ import javax.xml.bind.annotation.XmlType;
  * @author Maxime
  *
  */
-@XmlType(name="Questionnaire", propOrder={"entree"})
-@XmlRootElement(name="questionnaire")
-@XmlAccessorType(XmlAccessType.FIELD)
 public class Questionnaire implements Runnable{
 
 	/**

@@ -1,11 +1,15 @@
 package com.hskme.model;
 
+
+import javax.xml.bind.Element;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.XmlValue;
+import org.springframework.stereotype.Component;
 
 /**
  * 
@@ -15,23 +19,16 @@ import javax.xml.bind.annotation.XmlValue;
  * @author Maxime
  *
  */
-@XmlType(name="Caractere", propOrder={"categorie","traduction", "pinyin", "sinogramme"})
-@XmlRootElement(name="caractere")
-@XmlAccessorType(XmlAccessType.FIELD)
+@Component("caractere")
 public class Caractere implements Comparable<Caractere>{
 
 	/**
 	 * 
 	 */
-        @XmlAttribute(required=true)
-        private String categorie;
-        @XmlAttribute(required=true)
+    private String categorie;
 	private String traduction;
-        @XmlAttribute(required=true)
 	private String pinyin;
-        @XmlValue
 	private String sinogramme;
-	
 
         /**
 	 * No-args constructor for JAXB

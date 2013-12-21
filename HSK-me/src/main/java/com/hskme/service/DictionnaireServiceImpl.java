@@ -5,28 +5,31 @@
 package com.hskme.service;
 
 import com.hskme.model.Dictionnaire;
-import java.io.File;
-
+import javax.annotation.Resource;
+import org.springframework.stereotype.Service;
 /**
  *
  * @author root
  */
+@Service("dictionnaireServiceImpl")
 public class DictionnaireServiceImpl implements DictionnaireService{
+    @Resource(name="dico")
+    private Dictionnaire dico;
     
-    private Dictionnaire dictionnaire;
+
+
     /**
-     *
-     * @return
+     * @return the dico
      */
-    @Override
-    public Dictionnaire unmarshallDictionnaire(){
-        dictionnaire = new Dictionnaire();
-        return dictionnaire.unmarshallDictionnaire();
+    public Dictionnaire getDico() {
+        return dico;
     }
     
-    @Override
-    public void marshallDictionnaire(Dictionnaire dictionnaire, File file){
-        dictionnaire.marshallDictionnaire(file);
+    /**
+    * @param dictionnaire the dictionnaire to set
+    */
+    public void setDico(Dictionnaire dico) {
+        this.dico = dico;
     }
     
 }

@@ -13,7 +13,10 @@ import com.hskme.model.Questionnaire;
  */
 public class QuestionnaireServiceImpl implements QuestionnaireService{
     
-    private Questionnaire questionnaire;
+    private Questionnaire quest;
+
+    public QuestionnaireServiceImpl() {
+    }
     
     /**
      *
@@ -21,8 +24,21 @@ public class QuestionnaireServiceImpl implements QuestionnaireService{
      */
     @Override
     public Questionnaire setUpQuestionnaire(int nb, Dictionnaire dictionnaire, String from, String to){
-        questionnaire = new Questionnaire();
-        questionnaire.initQuestionnaire(nb, dictionnaire, from, to);
-        return questionnaire;
+        getQuest().initQuestionnaire(nb, dictionnaire, from, to);
+        return getQuest();
+    }
+
+    /**
+     * @param questionnaire the questionnaire to set
+     */
+    public void setQuest(Questionnaire quest) {
+        this.quest = quest;
+    }
+
+    /**
+     * @return the quest
+     */
+    public Questionnaire getQuest() {
+        return quest;
     }
 }

@@ -25,7 +25,7 @@ public class UtilisateurDaoJdbcServiceTest {
         daoJdbcService = new UtilisateurDaoJdbcServiceImpl();
     }
 
-    @Test
+
     public void testCreationQuestionnaire() throws Exception {
         Utilisateur utilisateur = daoJdbcService.selectInfosUtilisateur();
         Assert.assertEquals("utilisateurs egaux", "maxime", utilisateur.getEmail());

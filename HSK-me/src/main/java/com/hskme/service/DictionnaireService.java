@@ -4,8 +4,6 @@
  */
 package com.hskme.service;
 
-import com.hskme.model.Dictionnaire;
-import java.io.File;
 
 /**
  *
@@ -16,6 +14,5 @@ public interface DictionnaireService {
      *
      * @return
      */
-    public void marshallDictionnaire(Dictionnaire dictionnaire, File file);
-    public Dictionnaire unmarshallDictionnaire();
+
 }

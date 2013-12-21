@@ -1,10 +1,10 @@
 package com.hskme.dto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -42,10 +42,12 @@ public class CaractereDto implements Comparable<CaractereDto>{
 	public CaractereDto() {
 	}
         
-	public CaractereDto(String caractere, String pinyin, String traduction) {
+	public CaractereDto(String categorie, String caractere, String pinyin, String trad) {
+		traduction = new ArrayList<String>();
+		this.categorie = categorie;
 		this.sinogramme = caractere;
 		this.pinyin = pinyin;
-		this.traduction.add(traduction);
+		this.traduction.add(trad);
 	}
 
 	/**
@@ -79,23 +81,22 @@ public class CaractereDto implements Comparable<CaractereDto>{
 
 	@Override
 	public int compareTo(CaractereDto c) {
-		// TODO Auto-generated method stub
 		return pinyin.compareTo(c.pinyin);
 	}
 
-    /**
-     * @return the categorie
-     */
-    public String getCategorie() {
-        return categorie;
-    }
-
-    /**
-     * @param categorie the categorie to set
-     */
-    public void setCategorie(String categorie) {
-        this.categorie = categorie;
-    }
+//    /**
+//     * @return the categorie
+//     */
+//    public String getCategorie() {
+//        return categorie;
+//    }
+//
+//    /**
+//     * @param categorie the categorie to set
+//     */
+//    public void setCategorie(String categorie) {
+//        this.categorie = categorie;
+//    }
 
     /**
      * @return the sinogramme

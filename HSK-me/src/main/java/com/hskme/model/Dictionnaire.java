@@ -3,37 +3,31 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+
 import javax.xml.bind.JAXB;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
+
+import org.springframework.stereotype.Component;
+
+import com.hskme.dto.CaractereDto;
+import com.hskme.dto.DictionnaireDto;
 
 /**
  * @author Maxime
  *
  */
-@XmlType(name="Dictionnaire", propOrder={"listCaractere"})
-@XmlRootElement(name="dictionnaire")
-@XmlAccessorType(XmlAccessType.FIELD)
+@Component("dico")
 public class Dictionnaire {
-	@XmlElement(name="caractere")
 	private List<Caractere> listCaractere;
 	
 	public Dictionnaire(){
 	}
-	
-        public static Dictionnaire unmarshallDictionnaire(){
-            return JAXB.unmarshal(new File("dictionnaire.xml"), Dictionnaire.class);
-        }
         
-        public void marshallDictionnaire(File file){
-            JAXB.marshal(this, file);
-        }
-        
-        /**
+     /**
 	 * Deprecated
 	 */
 	public void loadVocab(File file) throws IOException{
@@ -82,17 +76,17 @@ public class Dictionnaire {
 		getListCaractere().clear() ;
 	}
 
-        /**
-         * @return the dictionnaire
-         */
-        public List<Caractere> getListCaractere() {
-            return listCaractere;
-        }
+    /**
+     * @return the dictionnaire
+     */
+    public List<Caractere> getListCaractere() {
+        return listCaractere;
+    }
 
-        /**
-         * @param dictionnaire the dictionnaire to set
-         */
-        public void setListCaractere(List<Caractere> dictionnaire) {
-            this.listCaractere = dictionnaire;
-        }
+    /**
+     * @param dictionnaire the dictionnaire to set
+     */
+    public void setListCaractere(List<Caractere> dictionnaire) {
+        this.listCaractere = dictionnaire;
+    }
 }
