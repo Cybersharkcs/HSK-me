@@ -1,4 +1,4 @@
-package com.hskme.test;
+package com.hskme.testService;
 
 import java.io.File;
 
@@ -32,10 +32,10 @@ public class DictionnaireDtoServiceTest {
         Assert.assertNotNull("dictionnaire non null", dictionnaire);
         Assert.assertNotNull("dictionnaire non vide", dictionnaire.getListCaractere());
         System.out.println(dictionnaire.getListCaractere().size());
-        System.out.println(dictionnaire.getListCaractere().get(0).getSinogramme());
-//        System.out.println(dictionnaire.getListCaractere().get(0).getCategorie());
-        System.out.println(dictionnaire.getListCaractere().get(0).getPinyin());
-        System.out.println(dictionnaire.getListCaractere().get(0).getTraduction());
+//        System.out.println(dictionnaire.getListCaractere().get(0).getSinogramme());
+////        System.out.println(dictionnaire.getListCaractere().get(0).getCategorie());
+//        System.out.println(dictionnaire.getListCaractere().get(0).getPinyin());
+//        System.out.println(dictionnaire.getListCaractere().get(0).getTraduction());
     }
     
     @Test

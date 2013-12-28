@@ -167,33 +167,33 @@ public class Questionnaire implements Runnable{
         this.entree = entree;
     }
     
-    public void initQuestionnaire(int nb, Dictionnaire dico, String from, String to){
-        for (int i =0 ; i<nb ; i++){
-                Entree nouvelleEntree = new Entree();
-                if(from.equals("caractere")) {
-                    nouvelleEntree.getQuestion().setQuestion(dico.getVocab(i).getSinogramme());
-                    if(to.equals("pinyin")) {
-                        nouvelleEntree.getQuestion().setSolution(dico.getVocab(i).getPinyin());
-                    } else if (to.equals("francais")) {
-                        nouvelleEntree.getQuestion().setSolution(dico.getVocab(i).getTraduction()); 
-                    }
-                } else if(from.equals("pinyin")) {
-                    nouvelleEntree.getQuestion().setQuestion(dico.getVocab(i).getPinyin());
-                    if(to.equals("caractere")) {
-                        nouvelleEntree.getQuestion().setSolution(dico.getVocab(i).getSinogramme());
-                    } else if(to.equals("francais")) {
-                        nouvelleEntree.getQuestion().setSolution(dico.getVocab(i).getTraduction()); 
-                    }
-                } else if(from.equals("francais")) {
-                    nouvelleEntree.getQuestion().setQuestion(dico.getVocab(i).getTraduction());
-                    if(to.equals("caractere")) {
-                        nouvelleEntree.getQuestion().setSolution(dico.getVocab(i).getSinogramme());
-                    } else if(to.equals("pinyin")) {
-                        nouvelleEntree.getQuestion().setSolution(dico.getVocab(i).getPinyin());
-                    }
-                }
-                this.entree.add(nouvelleEntree);
-        }
-    }
+//    public void initQuestionnaire(int nb, Dictionnaire dico, String from, String to){
+//        for (int i =0 ; i<nb ; i++){
+//                Entree nouvelleEntree = new Entree();
+//                if(from.equals("caractere")) {
+//                    nouvelleEntree.getQuestion().setQuestion(dico.getVocab(i).getSinogramme());
+//                    if(to.equals("pinyin")) {
+//                        nouvelleEntree.getQuestion().setSolution(dico.getVocab(i).getPinyin());
+//                    } else if (to.equals("francais")) {
+//                        nouvelleEntree.getQuestion().setSolution(dico.getVocab(i).getTraduction()); 
+//                    }
+//                } else if(from.equals("pinyin")) {
+//                    nouvelleEntree.getQuestion().setQuestion(dico.getVocab(i).getPinyin());
+//                    if(to.equals("caractere")) {
+//                        nouvelleEntree.getQuestion().setSolution(dico.getVocab(i).getSinogramme());
+//                    } else if(to.equals("francais")) {
+//                        nouvelleEntree.getQuestion().setSolution(dico.getVocab(i).getTraduction()); 
+//                    }
+//                } else if(from.equals("francais")) {
+//                    nouvelleEntree.getQuestion().setQuestion(dico.getVocab(i).getTraduction());
+//                    if(to.equals("caractere")) {
+//                        nouvelleEntree.getQuestion().setSolution(dico.getVocab(i).getSinogramme());
+//                    } else if(to.equals("pinyin")) {
+//                        nouvelleEntree.getQuestion().setSolution(dico.getVocab(i).getPinyin());
+//                    }
+//                }
+//                this.entree.add(nouvelleEntree);
+//        }
+//    }
     
 }

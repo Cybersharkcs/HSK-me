@@ -39,7 +39,7 @@ public class Dictionnaire {
 			//System.out.println("DEBUG loadVocab String line: " + line) ;
 			bf = line.split(",") ;
 			//System.out.println("DEBUG loadVocab String[] bf 0 : " + bf[0] + " 1 : " + bf[1] + " 2 : " + bf[2]) ;
-			this.getListCaractere().add(new Caractere(bf[0],bf[1],bf[2]));
+//			this.getListCaractere().add(new Caractere(bf[0],bf[1],bf[2]));
 		}
 		bfr.close();
                 Collections.shuffle(getListCaractere());

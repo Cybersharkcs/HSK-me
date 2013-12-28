@@ -24,7 +24,7 @@ public class QuestionnaireServiceImpl implements QuestionnaireService{
      */
     @Override
     public Questionnaire setUpQuestionnaire(int nb, Dictionnaire dictionnaire, String from, String to){
-        getQuest().initQuestionnaire(nb, dictionnaire, from, to);
+//        getQuest().initQuestionnaire(nb, dictionnaire, from, to);
         return getQuest();
     }
 

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<dictionnaire>
+<dictionnaire xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			  xmlns="http://www.dalongma.fr/ws/dictionnaire"
+			  xsi:schemaLocation="http://www.dalongma.fr/ws/dictionnaire dictionnaire.xsd" >
     <caractere>
         <categorie>HSK3</categorie>
         <pinyin>cai4dan1</pinyin>

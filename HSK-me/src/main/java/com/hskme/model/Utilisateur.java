@@ -19,6 +19,7 @@ public class Utilisateur {
     @Id
     private String email;
     private String password;
+    private String compteur;
 
     public Utilisateur() {
     }
