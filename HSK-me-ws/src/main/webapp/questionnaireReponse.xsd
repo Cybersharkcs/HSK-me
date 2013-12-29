@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+		targetNamespace="http://www.dalongma.fr/ws/questionnaireReponse" 
+		xmlns="http://www.dalongma.fr/ws/questionnaireReponse" 
+		elementFormDefault="qualified">
+		
+
+    <xsd:element name="questionnaireReponse" type="xsd:string"></xsd:element>
+</xsd:schema>

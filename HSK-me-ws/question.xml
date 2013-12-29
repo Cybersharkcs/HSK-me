@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<question xmlns="http://wwww.dalongma.fr/hsk-me-ws">
+	question
+	<solution>solution</solution>
+	<reponses>
+		<reponse valid="true|false">rep1</reponse>
+	    <reponse valid="true|false">rep2</reponse>
+	    <reponse valid="true|false">rep3</reponse>
+	    <reponse valid="true|false">rep4</reponse>
+	    <reponse valid="true|false">rep5</reponse>
+    </reponses>
+</question>

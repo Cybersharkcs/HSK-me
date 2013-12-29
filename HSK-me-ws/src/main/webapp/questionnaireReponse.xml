@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<questionnaireReponse xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+					  xmlns="http://www.dalongma.fr/ws/questionnaireReponse"
+					  xsi:schemaLocation="http://www.dalongma.fr/ws/questionnaireReponse questionnaireReponse.xsd">
+reponse
+</questionnaireReponse>

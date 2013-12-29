@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+		targetNamespace="http://www.dalongma.fr/ws/questionnaireRequest" 
+		xmlns="http://www.dalongma.fr/ws/questionnaireRequest" 
+		elementFormDefault="qualified">
+
+    <xsd:element name="question" type="xsd:string"></xsd:element>
+
+    <xsd:element name="solution" type="xsd:string"></xsd:element>
+
+    <xsd:element name="reponses" type="reponses"></xsd:element>
+    
+    <xsd:complexType name="reponses">
+    	<xsd:sequence maxOccurs="5" minOccurs="5">
+    		<xsd:element name="reponse" type="reponse"></xsd:element>
+    	</xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="reponse">
+    	<xsd:simpleContent>
+    		<xsd:extension base="xsd:string">
+    			<xsd:attribute name="valid" type="xsd:boolean"></xsd:attribute>
+    		</xsd:extension>
+    	</xsd:simpleContent>
+    </xsd:complexType>
+
+    <xsd:element name="questionnaireRequest"
+    	type="questionnaireRequest">
+    </xsd:element>
+    
+    <xsd:complexType name="questionnaireRequest">
+    	<xsd:sequence>
+    		<xsd:element name="question" type="xsd:string"></xsd:element>
+    		<xsd:element name="solution" type="xsd:string"></xsd:element>
+    		<xsd:element name="reponses" type="reponses"></xsd:element>
+    	</xsd:sequence>
+    </xsd:complexType>
+
+</xsd:schema>
